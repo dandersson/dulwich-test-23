@@ -65,8 +65,8 @@ def get_credentials(config_fp):
         logger.debug(e, exc_info=True)
         raise InvalidConfigError(e)
 
-    if not url.startswith('https://'):
-        raise InvalidConfigError('invalid URL "%s" -- only `https` is supported')
+    if not (url.startswith('https://') or url.startswith('http://')):
+        raise InvalidConfigError('invalid URL "%s" -- only the `http` and `https` protocols are supported')
 
     return url, username, password
 
